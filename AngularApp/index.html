@@ -7,6 +7,7 @@
     <!--Bootstrap Css-->
     <link rel="stylesheet" type="text/css" href="Content/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="Content/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="Content/style.css">
 
 </head>
 <body ng-controller="Main as controller">
@@ -15,6 +16,7 @@
         <!--Account table-->
         <div class="col-md-7">
             <h2>Bank Account</h2>
+            <p>Account Balance: ${{controller.balance()}}</p>
             <table class="table table-bordered">
                 <thead>
                     <tr>
@@ -29,7 +31,7 @@
                         <td>{{entry.name}}</td>
                         <td>{{entry.date.getMonth()+1}}/{{entry.date.getDate()}}/{{entry.date.getFullYear()}}</td>
                         <td>{{entry.type}}</td>
-                        <td>{{entry.cost}}</td>
+                        <td class="{{entry.type}}">${{entry.cost}}</td>
                     </tr>
                 </tbody>
             </table>
