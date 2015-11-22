@@ -66,6 +66,7 @@
                         <option value="Expense" selected>Expense</option>
                         <option value="Income">Income</option>
                     </select>
+                    <p ng-if="entryForm.type.$invalid && entryForm.type.$touched" class="help-block">Type selection is required.</p>
                 </div>
 
                 <!--Cost input-->
