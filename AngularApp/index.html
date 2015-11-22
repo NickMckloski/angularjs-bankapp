@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <title>Index</title>
+	<meta charset="utf-8" />
+
+    <!--Bootstrap Css-->
+    <link rel="stylesheet" type="text/css" href="Content/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="Content/bootstrap-theme.min.css">
+
+</head>
+<body ng-controller="Main as controller">
+
+    <div class="container">
+        <!--Account table-->
+        <div class="col-md-7">
+            <h2>Bank Account</h2>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Date</th>
+                        <th>Type</th>
+                        <th>Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="entry in controller.entries">
+                        <td>{{entry.name}}</td>
+                        <td>{{entry.date}}</td>
+                        <td>{{entry.type}}</td>
+                        <td>{{entry.cost}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!--Entry section-->
+        <div class="col-md-5">
+            <h2>New Account Entry:</h2>
+
+            <input class="input-sm" type="text" ng-model="controller.entry" placeholder="Enter food" />
+        </div>
+    </div>
+
+    <!--Script libraries-->
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/angular-ui/ui-bootstrap.min.js"></script>
+    <script src="app/app.module.js"></script>
+    <script src="app/controllers/main.js"></script>
+
+</body>
+</html>
