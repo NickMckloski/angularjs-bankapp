@@ -14,17 +14,6 @@
             controller.entries.push({ name: controller.formEntryName, date: controller.formEntryDate, type: controller.formEntryType, cost: controller.formEntryCost });
         }
 
-        //function to submit the entry form      
-        controller.submitForm = function (isValid) {
-
-            // check to make sure the form is valid
-            if (isValid) {
-                alert('our form is valid');
-            } else {
-                alert('not valid');
-            }
-
-        };
     }
 
 })();

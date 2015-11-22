@@ -37,28 +37,33 @@
         <!--Entry section-->
         <div class="col-md-5">
             <h2>New Entry:</h2>
-            <form name="entryForm" ng-submit="controller.submitForm(entryForm.$valid)" role="form" novalidate>
-                <div class="form-group">
+            <form name="entryForm" role="form" novalidate>
+                
+                <div class="form-group" ng-class="{ 'has-error' : entryForm.name.$invalid && entryForm.name.$touched }">
                     <label for="name">Name:</label>
                     <input type="text" name="name" class="form-control" ng-model="controller.formEntryName" required/>
+                    <p ng-if="entryForm.name.$invalid && entryForm.name.$touched" class="help-block">Name is required.</p>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group" ng-class="{ 'has-error' : entryForm.date.$invalid && entryForm.date.$touched }">
                     <label for="date">Date:</label>
-                    <input id="date" type="date" class="form-control" ng-model="controller.formEntryDate" required/>
+                    <input id="date" type="date" name="date" class="form-control" ng-model="controller.formEntryDate" required/>
+                    <p ng-if="entryForm.date.$invalid && entryForm.date.$touched" class="help-block">Date is required.</p>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group" ng-class="{ 'has-error' : entryForm.type.$invalid && entryForm.type.$touched }">
                     <label for="type">Type:</label>
-                    <input type="text" class="form-control" ng-model="controller.formEntryType" required/>
+                    <input type="text" name="type" class="form-control" ng-model="controller.formEntryType" required/>
+                    <p ng-if="entryForm.type.$invalid && entryForm.type.$touched" class="help-block">Type is required.</p>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group" ng-class="{ 'has-error' : entryForm.cost.$invalid && entryForm.cost.$touched }">
                     <label for="cost">Cost:</label>
-                    <input type="number" class="form-control" ng-model="controller.formEntryCost" required/>
+                    <input type="number" name="cost" class="form-control" ng-model="controller.formEntryCost" required/>
+                    <p ng-if="entryForm.cost.$invalid && entryForm.cost.$touched" class="help-block">Cost is required.</p>
                 </div>
-                <!--ng-click="controller.addEntry()"-->
-                <button type="submit" ng-disabled="entryForm.$invalid" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> Add Entry</button>
+
+                <button type="submit" ng-disabled="entryForm.$invalid" ng-click="controller.addEntry()" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> Add Entry</button>
             </form>
         </div>
     </div>
