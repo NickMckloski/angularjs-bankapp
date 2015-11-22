@@ -27,7 +27,7 @@
                 <tbody>
                     <tr ng-repeat="entry in controller.entries">
                         <td>{{entry.name}}</td>
-                        <td>{{entry.date}}</td>
+                        <td>{{entry.date.getMonth()+1}}/{{entry.date.getDate()}}/{{entry.date.getFullYear()}}</td>
                         <td>{{entry.type}}</td>
                         <td>{{entry.cost}}</td>
                     </tr>
@@ -36,17 +36,44 @@
         </div>
         <!--Entry section-->
         <div class="col-md-5">
-            <h2>New Account Entry:</h2>
+            <h2>New Entry:</h2>
+            <form name="entryForm" ng-submit="controller.submitForm(entryForm.$valid)" role="form" novalidate>
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" name="name" class="form-control" ng-model="controller.formEntryName" required/>
+                </div>
 
-            <input class="input-sm" type="text" ng-model="controller.entry" placeholder="Enter food" />
+                <div class="form-group">
+                    <label for="date">Date:</label>
+                    <input id="date" type="date" class="form-control" ng-model="controller.formEntryDate" required/>
+                </div>
+
+                <div class="form-group">
+                    <label for="type">Type:</label>
+                    <input type="text" class="form-control" ng-model="controller.formEntryType" required/>
+                </div>
+
+                <div class="form-group">
+                    <label for="cost">Cost:</label>
+                    <input type="number" class="form-control" ng-model="controller.formEntryCost" required/>
+                </div>
+                <!--ng-click="controller.addEntry()"-->
+                <button type="submit" ng-disabled="entryForm.$invalid" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> Add Entry</button>
+            </form>
         </div>
     </div>
 
     <!--Script libraries-->
     <script src="Scripts/angular.min.js"></script>
-    <script src="Scripts/angular-ui/ui-bootstrap.min.js"></script>
+    <script src="Scripts/jquery-2.1.4.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
     <script src="app/app.module.js"></script>
-    <script src="app/controllers/main.js"></script>
+    <script src="app/controllers/main.js"></script>    
+    
+    <!--Bootstrap page specific javascript-->
+    <script>
+        $('#date').tooltip({ 'trigger': 'focus', 'title': 'Date input does not work on IE9 and lower.' });
+    </script>
 
 </body>
 </html>
