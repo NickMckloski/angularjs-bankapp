@@ -39,24 +39,31 @@
             <h2>New Entry:</h2>
             <form name="entryForm" role="form" novalidate>
                 
+                <!--Name input-->
                 <div class="form-group" ng-class="{ 'has-error' : entryForm.name.$invalid && entryForm.name.$touched }">
                     <label for="name">Name:</label>
                     <input type="text" name="name" class="form-control" ng-model="controller.formEntryName" required/>
                     <p ng-if="entryForm.name.$invalid && entryForm.name.$touched" class="help-block">Name is required.</p>
                 </div>
 
+                <!--Date input-->
                 <div class="form-group" ng-class="{ 'has-error' : entryForm.date.$invalid && entryForm.date.$touched }">
                     <label for="date">Date:</label>
                     <input id="date" type="date" name="date" class="form-control" ng-model="controller.formEntryDate" required/>
                     <p ng-if="entryForm.date.$invalid && entryForm.date.$touched" class="help-block">Date is required.</p>
                 </div>
 
-                <div class="form-group" ng-class="{ 'has-error' : entryForm.type.$invalid && entryForm.type.$touched }">
+                <!--Type select-->
+                <div class="form-group" ng-class="{ 'has-error' : entryForm.type.$invalid && entryForm.type.$touched}">
                     <label for="type">Type:</label>
-                    <input type="text" name="type" class="form-control" ng-model="controller.formEntryType" required/>
-                    <p ng-if="entryForm.type.$invalid && entryForm.type.$touched" class="help-block">Type is required.</p>
+                    <select ng-model="controller.formEntryType" class="form-control" name="type" required>
+                        <option value="" style="display: none;"  disabled>Please select</option>
+                        <option value="Expense" selected>Expense</option>
+                        <option value="Income">Income</option>
+                    </select>
                 </div>
 
+                <!--Cost input-->
                 <div class="form-group" ng-class="{ 'has-error' : entryForm.cost.$invalid && entryForm.cost.$touched }">
                     <label for="cost">Cost:</label>
                     <input type="number" name="cost" class="form-control" ng-model="controller.formEntryCost" required/>
