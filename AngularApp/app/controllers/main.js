@@ -14,6 +14,15 @@
             controller.entries.push({ name: controller.formEntryName, date: controller.formEntryDate, type: controller.formEntryType, cost: controller.formEntryCost });
         }
 
+        //function to remove an entry
+        controller.removeEntry = function (entry) {
+            for (var i = 0; i < controller.entries.length; i++) {
+                if (controller.entries[i] == entry) {
+                    controller.entries.splice(i, 1);
+                }
+            }
+        }
+
         //function to get balance of all entries
         controller.balance = function () {
             var total = 0;
