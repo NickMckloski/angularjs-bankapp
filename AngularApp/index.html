@@ -52,10 +52,9 @@
                 </div>
 
                 <!--Date input-->
-                <div class="form-group" ng-class="{ 'has-error' : entryForm.date.$invalid && entryForm.date.$touched }">
+                <div class="form-group">
                     <label for="date">Date:</label>
-                    <input id="date" type="date" name="date" class="form-control" ng-model="controller.formEntryDate" required/>
-                    <p ng-if="entryForm.date.$invalid && entryForm.date.$touched" class="help-block">Date is required.</p>
+                    <input id="date" type="date" name="date" class="form-control" ng-model="controller.formEntryDate"/>
                 </div>
 
                 <!--Type select-->
@@ -90,7 +89,9 @@
     
     <!--Bootstrap page specific javascript-->
     <script>
-        $('#date').tooltip({ 'trigger': 'focus', 'title': 'Date input does not work on IE9 and lower.' });
+        var isIE = /*@cc_on!@*/false || !!document.documentMode;
+        if(isIE)
+            $('#date').tooltip({ 'trigger': 'focus', 'title': 'Date input does not work on IE9 and lower.' });
     </script>
 
 </body>
