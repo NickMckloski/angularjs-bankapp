@@ -1,17 +1,23 @@
 ﻿(function () {
     'use strict';
 
-    angular.module('app').controller('Main', main);
+    angular.module('app', ['ngCookies']).controller('Main', ['$cookies', main]);
 
-    function main() {
+    function main($cookies) {
         var controller = this;
-        //controller.entries = [{ name: 'Rent', date: '11/22/2015', type: 'Expense', cost: 500 },
-        //                      { name: 'Food', date: '11/22/2015', type: 'Expense', cost: 200 }];
+
         controller.entries = [];
+        //load entries from cookies or set it to blank array
+        if (typeof $cookies.get('entries') == 'string') {
+            var json = (JSON.parse($cookies.get('entries')));
+            controller.entries = json;
+        }
 
         //function to add a new entry
         controller.addEntry = function () {
             controller.entries.push({ name: controller.formEntryName, date: controller.formEntryDate, type: controller.formEntryType, cost: controller.formEntryCost });
+            //save entries into cookies
+            $cookies.put('entries', JSON.stringify(controller.entries));
         }
 
         //function to remove an entry
@@ -21,6 +27,7 @@
                     controller.entries.splice(i, 1);
                 }
             }
+            $cookies.put('entries', JSON.stringify(controller.entries));
         }
 
         //function to get balance of all entries

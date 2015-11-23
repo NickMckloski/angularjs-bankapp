@@ -40,7 +40,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-cloak ng-repeat="entry in controller.entries">
+                            <tr ng-cloak ng-repeat="entry in controller.entries track by $index">
                                 <td>{{entry.name}}</td>
                                 <td>{{entry.date.getMonth()+1}}/{{entry.date.getDate()}}/{{entry.date.getFullYear()}}</td>
                                 <td>{{entry.type}}</td>
@@ -104,12 +104,15 @@
         </div>
     </div>
 
-    <!--Script libraries-->
+    <!--Angular libraries-->
     <script src="./Scripts/angular.min.js"></script>
-    <script src="./Scripts/jquery-2.1.4.min.js"></script>
-    <script src="./Scripts/bootstrap.min.js"></script>
+    <script src="./Scripts/angular-cookies.min.js"></script>
+    <!--Angular app and controller-->
     <script src="./app/app.module.js"></script>
     <script src="./app/controllers/main.js"></script>    
+    <!--Bootstrap libraries-->
+    <script src="./Scripts/jquery-2.1.4.min.js"></script>
+    <script src="./Scripts/bootstrap.min.js"></script>
     
     <!--Bootstrap page specific javascript-->
     <script>
