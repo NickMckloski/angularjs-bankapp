@@ -15,7 +15,13 @@
 
         //function to add a new entry
         controller.addEntry = function () {
-            controller.entries.push({ name: controller.formEntryName, date: controller.formEntryDate, type: controller.formEntryType, cost: controller.formEntryCost });
+
+            //nested function to format date object to string
+            function formatDate (date) {
+                return date.getMonth() + 1 + '/' + date.getDate() + '/' + date.getFullYear();
+            }
+
+            controller.entries.push({ name: controller.formEntryName, date: formatDate(controller.formEntryDate), type: controller.formEntryType, cost: controller.formEntryCost });
             //save entries into cookies
             $cookies.put('entries', JSON.stringify(controller.entries));
         }
