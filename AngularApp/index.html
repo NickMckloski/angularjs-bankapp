@@ -29,7 +29,7 @@
                 <!--Account table-->
                 <div class="col-md-7">
                     <h2>Bank Account</h2>
-                    <p>Account Balance: ${{controller.balance()}}</p>
+                    <p ng-cloak>Account Balance: ${{controller.balance()}}</p>
                     <table class="table table-bordered">
                         <thead>
                             <tr>
@@ -40,7 +40,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="entry in controller.entries">
+                            <tr ng-cloak ng-repeat="entry in controller.entries">
                                 <td>{{entry.name}}</td>
                                 <td>{{entry.date.getMonth()+1}}/{{entry.date.getDate()}}/{{entry.date.getFullYear()}}</td>
                                 <td>{{entry.type}}</td>

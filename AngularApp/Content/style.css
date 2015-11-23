@@ -1,11 +1,15 @@
-﻿html, body {
+﻿/*ng cloak is used to hide script while the page is loading*/
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+}
+
+html, body {
     height: 100%;
     background-color: #f2f2f2;
 }
 
 body {
     color: #333;
-    /*text-shadow: 0 .05rem .1rem rgba(0,0,0,.5);*/
 }
 
 .Income {
