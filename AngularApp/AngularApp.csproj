@@ -67,7 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\app.module.js" />
-    <Content Include="app\controllers\main.js" />
+    <Content Include="app\controllers\account.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
