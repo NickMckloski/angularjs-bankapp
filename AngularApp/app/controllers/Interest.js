@@ -30,7 +30,9 @@
             //var out = a + d;
             //console.log(a + " " + b + " " + c + " " + d + " " + out);
 
-            return (starting * Math.pow((1 + rate / timesAnnually), (timesAnnually * years))) + (addition * ((Math.pow(1 + (rate / timesAnnually), (timesAnnually * years)) - 1) / (rate / timesAnnually)));
+            var output = (starting * Math.pow((1 + rate / timesAnnually), (timesAnnually * years))) + (addition * ((Math.pow(1 + (rate / timesAnnually), (timesAnnually * years)) - 1) / (rate / timesAnnually)));
+            return (output).formatMoney(2);
+
         }
     }
 

@@ -21,7 +21,7 @@
                 return date.getMonth() + 1 + '/' + date.getDate() + '/' + date.getFullYear();
             }
 
-            controller.entries.push({ name: controller.formEntryName, date: controller.formEntryDate == null ? formatDate(new Date()) : formatDate(controller.formEntryDate), type: controller.formEntryType, cost: controller.formEntryCost });
+            controller.entries.push({ name: controller.formEntryName, date: controller.formEntryDate == null ? formatDate(new Date()) : formatDate(controller.formEntryDate), type: controller.formEntryType, cost: (controller.formEntryCost).formatMoney(2) });
             //save entries into cookies
             $cookies.put('entries', JSON.stringify(controller.entries));
         }
@@ -42,11 +42,12 @@
             for (var i = 0; i < controller.entries.length; i++) {
                 var entry = controller.entries[i];
                 if(entry.type == "Income")
-                    total += entry.cost;
+                    total += parseFloat(entry.cost.replace('$', '').replace(/,/g, ''));
                 else
-                    total -= entry.cost;
+                    total -= parseFloat(entry.cost.replace('$', '').replace(/,/g, ''));
             }
-            return total;
+
+            return Number(total).formatMoney(2);
         }
 
         //variable to detect if browser supports date input
