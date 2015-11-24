@@ -35,6 +35,7 @@
 <!--Entry form-->
 <div class="col-md-5">
     <h2>New Entry:</h2>
+
     <form name="entryForm" role="form" novalidate>
 
         <!--Name input-->
@@ -48,7 +49,7 @@
         <div class="form-group">
             <label for="date">Date:</label>
             <input type="date" ng-disabled="controller.cantInputDate()" name="date" class="form-control" ng-model="controller.formEntryDate" />
-            <p ng-if="controller.cantInputDate()" class="help-block">Date is not supported on your current browser. Instead today's date will be used.</p>
+            <p ng-if="controller.cantInputDate()" class="help-block">Date is not supported on your current browser. Today's date will be used instead.</p>
         </div>
 
         <!--Type select-->
@@ -56,7 +57,7 @@
             <label for="type">Type:</label>
             <select ng-model="controller.formEntryType" class="form-control" name="type" required>
                 <option value="" style="display: none;" disabled>Please select</option>
-                <option value="Expense" selected>Expense</option>
+                <option value="Expense">Expense</option>
                 <option value="Income">Income</option>
             </select>
             <p ng-if="entryForm.type.$invalid && entryForm.type.$touched" class="help-block">Type selection is required.</p>
@@ -69,6 +70,8 @@
             <p ng-if="entryForm.cost.$invalid && entryForm.cost.$touched" class="help-block">Cost is required.</p>
         </div>
 
-        <button type="submit" ng-disabled="entryForm.$invalid" ng-click="controller.addEntry()" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> Add Entry</button>
+        <button type="submit" ng-disabled="entryForm.$invalid" ng-click="controller.addEntry()" class="btn btn-default">
+            <span class="glyphicon glyphicon-plus"></span> Add Entry
+        </button>
     </form>
 </div>
