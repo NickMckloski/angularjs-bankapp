@@ -36,10 +36,16 @@ body {
 .navheader .navlink + .navlink {
     margin-left: 1rem;
 }
+
 .navheader .navlink:hover {
     color: white;
 }
+
 .navheader .active {
     color: white;
     border-bottom-color: white;
+}
+
+.pull-left {
+    text-align: left !important;
 }

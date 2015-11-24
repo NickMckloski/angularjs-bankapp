@@ -2,8 +2,80 @@
     Layout = "./Shared/_Layout.cshtml";
 
     PageData["Controller"] = "Interest";
-    Page.Title = "Interest Calculator";
+    Page.Title = "Interest Calculators";
 }
 <div class="col-md-12">
-    <h2>Interest Calculator</h2>
+    <h2>Interest Calculators</h2>
+    <div class="col-md-6">
+        <p>Compounding interest</p>
+        <form name="compoundInterestForm" class="form-horizontal" role="form" novalidate>
+
+            <!--Starting input-->
+            <div class="form-group" ng-class="{ 'has-error' : compoundInterestForm.starting.$invalid && compoundInterestForm.starting.$touched }">
+                <label class="control-label col-sm-4 pull-left" for="name">Starting amount:</label>
+                <div class="col-sm-6 pull-right">
+                    <input type="number" name="starting" class="form-control" ng-model="controller.compStarting" required />
+                    <p ng-if="compoundInterestForm.starting.$invalid && compoundInterestForm.starting.$touched" class="help-block">Starting amount is required.</p>
+                </div>
+            </div>
+
+            <!--Addition input-->
+            <div class="form-group" ng-class="{ 'has-error' : compoundInterestForm.addition.$invalid && compoundInterestForm.addition.$touched }">
+                <label class="control-label col-sm-4 pull-left" for="name">Annual addition:</label>
+                <div class="col-sm-6 pull-right">
+                    <input type="number" name="addition" class="form-control" ng-model="controller.compAddition" required />
+                    <p ng-if="compoundInterestForm.addition.$invalid && compoundInterestForm.addition.$touched" class="help-block">Annual addition is required.</p>
+                </div>
+            </div>           
+
+            <!--Time to compound input-->
+            <div class="form-group" ng-class="{ 'has-error' : compoundInterestForm.times.$invalid && compoundInterestForm.times.$touched }">
+                <label class="control-label col-sm-4 pull-left" for="name">Number of times to compound annually:</label>
+                <div class="col-sm-6 pull-right">
+                    <input type="number" name="times" class="form-control" ng-model="controller.comptimes" required />
+                    <p ng-if="compoundInterestForm.times.$invalid && compoundInterestForm.times.$touched" class="help-block">Number of times to compound is required.</p>
+                </div>
+            </div>
+
+            <!--Years input-->
+            <div class="form-group" ng-class="{ 'has-error' : compoundInterestForm.years.$invalid && compoundInterestForm.years.$touched }">
+                <label class="control-label col-sm-4 pull-left" for="name">Years:</label>
+                <div class="col-sm-6 pull-right">
+                    <input type="number" name="years" class="form-control" ng-model="controller.compYears" required />
+                    <p ng-if="compoundInterestForm.years.$invalid && compoundInterestForm.years.$touched" class="help-block">Number of years is required.</p>
+                </div>
+            </div>
+
+            <!--Rate input-->
+            <div class="form-group" ng-class="{ 'has-error' : compoundInterestForm.rate.$invalid && compoundInterestForm.rate.$touched }">
+                <label class="control-label col-sm-4 pull-left" for="name">Interest rate:</label>
+                <div class="col-sm-6 pull-right">
+                    <input type="number" name="rate" class="form-control" ng-model="controller.compRate" required />
+                    <p ng-if="compoundInterestForm.rate.$invalid && compoundInterestForm.rate.$touched" class="help-block">Interest rate is required.</p>
+                </div>
+            </div>
+
+            <!--Type select-->
+            <div class="form-group" ng-class="{ 'has-error' : compoundInterestForm.type.$invalid && compoundInterestForm.type.$touched}">
+                <label class="control-label col-sm-8 pull-left" for="type">Additions at start or end of compounding period:</label>
+                <div class="col-sm-4 pull-right">
+                    <select ng-model="controller.compType" class="form-control" name="type" required>
+                        <option value="" style="display: none;" disabled>Please select</option>
+                        <option value="Expense" selected>Start</option>
+                        <option value="Income">End</option>
+                    </select>
+                    <p ng-if="compoundInterestForm.type.$invalid && compoundInterestForm.type.$touched" class="help-block">Type selection is required.</p>
+                </div>
+            </div>
+
+        </form>
+    </div>
+    
+
+    <div class="col-md-6">
+        <p>Simple interest</p>
+        <form name="simpleInterestForm" class="form-horizontal" role="form" novalidate>
+
+        </form>
+    </div>
 </div>
