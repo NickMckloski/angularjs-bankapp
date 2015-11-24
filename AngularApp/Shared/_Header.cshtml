@@ -1,0 +1,20 @@
+﻿<div class="jumbotron">
+    <div class="container">
+        <h1>Mock Bank App</h1>
+        <!--Navlinks-->
+        <nav class="nav navheader">
+            @{
+                var LinkName = new List<string> { "Account", "Interest Calculator" };
+                var FileName = new List<string> { "index", "interest" };
+
+                for (var i = 0; i < LinkName.Count; i++)
+                {
+                    <a class="@Html.Raw(Page.Title == LinkName[i] ? "navlink active" : "navlink")" 
+                       href="@Html.Raw(Page.Title == LinkName[i] ? "#" : "./" + FileName[i])">
+                        @LinkName[i]
+                    </a>
+                }
+            }
+        </nav>
+    </div>
+</div>

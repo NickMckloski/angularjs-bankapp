@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html ng-app="app">
+    <head>
+        <title>Bank App - @Page.Title</title>
+        <meta charset="utf-8" />
+
+        <!--Bootstrap Css-->
+        <link rel="stylesheet" type="text/css" href="./Content/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="./Content/style.css">
+    </head>
+    <body ng-controller="@Page.Controller as controller">
+
+        <!--Header-->
+        @RenderPage("./_Header.cshtml")
+        <!--Header End-->
+
+        <!--Body-->
+        
+        <div class="container">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+        <!--Body End-->
+
+        <!--Footer-->
+        @RenderPage("./_Footer.cshtml")
+        <!--Footer End-->
+
+        <!--Angular libraries-->
+        <script src="./Scripts/angular.min.js"></script>
+        <script src="./Scripts/angular-cookies.min.js"></script>
+        <!--Angular app and controller-->
+        <script src="./app/app.module.js"></script>
+        @{var ControllerFile = Page.Controller + ".js";}
+        <script src="./app/controllers/@ControllerFile"></script>
+        <!--Bootstrap libraries-->
+        <script src="./Scripts/jquery-2.1.4.min.js"></script>
+        <script src="./Scripts/bootstrap.min.js"></script>
+
+    </body>
+</html>

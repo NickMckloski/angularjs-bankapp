@@ -1,0 +1,74 @@
+﻿@{
+    Layout = "~/Shared/_Layout.cshtml";
+
+    PageData["Controller"] = "Account";
+    Page.Title = "Account";
+}
+<!--Account table-->
+<div class="col-md-7">
+    <h2>Bank Account</h2>
+    <p ng-cloak>Account Balance: ${{controller.balance()}}</p>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Date</th>
+                <th>Type</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-cloak ng-repeat="entry in controller.entries track by $index">
+                <td>{{entry.name}}</td>
+                <td>{{entry.date}}</td>
+                <td>{{entry.type}}</td>
+                <td class="{{entry.type}}">
+                    ${{entry.cost}}
+                    <a style="float: right;" ng-click="controller.removeEntry(entry)">
+                        <span class="glyphicon glyphicon-remove" style="cursor: pointer;"></span>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<!--Entry form-->
+<div class="col-md-5">
+    <h2>New Entry:</h2>
+    <form name="entryForm" role="form" novalidate>
+
+        <!--Name input-->
+        <div class="form-group" ng-class="{ 'has-error' : entryForm.name.$invalid && entryForm.name.$touched }">
+            <label for="name">Name:</label>
+            <input type="text" name="name" class="form-control" ng-model="controller.formEntryName" required />
+            <p ng-if="entryForm.name.$invalid && entryForm.name.$touched" class="help-block">Name is required.</p>
+        </div>
+
+        <!--Date input-->
+        <div class="form-group">
+            <label for="date">Date:</label>
+            <input type="date" ng-disabled="controller.cantInputDate()" name="date" class="form-control" ng-model="controller.formEntryDate" />
+            <p ng-if="controller.cantInputDate()" class="help-block">Date is not supported on your current browser. Instead today's date will be used.</p>
+        </div>
+
+        <!--Type select-->
+        <div class="form-group" ng-class="{ 'has-error' : entryForm.type.$invalid && entryForm.type.$touched}">
+            <label for="type">Type:</label>
+            <select ng-model="controller.formEntryType" class="form-control" name="type" required>
+                <option value="" style="display: none;" disabled>Please select</option>
+                <option value="Expense" selected>Expense</option>
+                <option value="Income">Income</option>
+            </select>
+            <p ng-if="entryForm.type.$invalid && entryForm.type.$touched" class="help-block">Type selection is required.</p>
+        </div>
+
+        <!--Cost input-->
+        <div class="form-group" ng-class="{ 'has-error' : entryForm.cost.$invalid && entryForm.cost.$touched }">
+            <label for="cost">Cost:</label>
+            <input type="number" name="cost" class="form-control" ng-model="controller.formEntryCost" required />
+            <p ng-if="entryForm.cost.$invalid && entryForm.cost.$touched" class="help-block">Cost is required.</p>
+        </div>
+
+        <button type="submit" ng-disabled="entryForm.$invalid" ng-click="controller.addEntry()" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> Add Entry</button>
+    </form>
+</div>
