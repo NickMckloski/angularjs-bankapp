@@ -36,38 +36,46 @@
 <div class="col-md-5">
     <h2>New Entry:</h2>
 
-    <form name="entryForm" role="form" novalidate>
+    <form name="entryForm" class="form-horizontal" role="form" novalidate>
 
         <!--Name input-->
         <div class="form-group" ng-class="{ 'has-error' : entryForm.name.$invalid && entryForm.name.$touched }">
-            <label for="name">Name:</label>
-            <input type="text" name="name" class="form-control" ng-model="controller.formEntryName" required />
-            <p ng-if="entryForm.name.$invalid && entryForm.name.$touched" class="help-block">Name is required.</p>
+            <label for="name" class="control-label col-sm-2 pull-left">Name:</label>
+            <div class="col-sm-10 pull-right">
+                <input type="text" name="name" class="form-control" ng-model="controller.formEntryName" required />
+                <p ng-if="entryForm.name.$invalid && entryForm.name.$touched" class="help-block">Name is required.</p>
+            </div>
         </div>
 
         <!--Date input-->
         <div class="form-group">
-            <label for="date">Date:</label>
-            <input type="date" ng-disabled="controller.cantInputDate()" name="date" class="form-control" ng-model="controller.formEntryDate" />
-            <p ng-if="controller.cantInputDate()" class="help-block">Date is not supported on your current browser. Today's date will be used instead.</p>
+            <label for="date" class="control-label col-sm-2 pull-left">Date:</label>
+            <div class="col-sm-10 pull-right">
+                <input type="date" ng-disabled="controller.cantInputDate()" name="date" class="form-control" ng-model="controller.formEntryDate" />
+                <p ng-if="controller.cantInputDate()" class="help-block">Date is not supported on your current browser. Today's date will be used instead.</p>
+            </div>
         </div>
 
         <!--Type select-->
         <div class="form-group" ng-class="{ 'has-error' : entryForm.type.$invalid && entryForm.type.$touched}">
-            <label for="type">Type:</label>
-            <select ng-model="controller.formEntryType" class="form-control" name="type" required>
-                <option value="" style="display: none;" disabled>Please select</option>
-                <option value="Expense">Expense</option>
-                <option value="Income">Income</option>
-            </select>
+            <label for="type" class="control-label col-sm-2 pull-left">Type:</label>
+            <div class="col-sm-5">
+                <select ng-model="controller.formEntryType" class="form-control" name="type" required>
+                    <option value="" style="display: none;" disabled>Please select</option>
+                    <option value="Expense">Expense</option>
+                    <option value="Income">Income</option>
+                </select>
+            </div>
             <p ng-if="entryForm.type.$invalid && entryForm.type.$touched" class="help-block">Type selection is required.</p>
         </div>
 
         <!--Cost input-->
         <div class="form-group" ng-class="{ 'has-error' : entryForm.cost.$invalid && entryForm.cost.$touched }">
-            <label for="cost">Cost:</label>
-            <input type="number" name="cost" class="form-control" ng-model="controller.formEntryCost" required />
-            <p ng-if="entryForm.cost.$invalid && entryForm.cost.$touched" class="help-block">Cost is required.</p>
+            <label for="cost" class="control-label col-sm-2 pull-left">Cost:</label>
+            <div class="col-sm-10 pull-right">
+                <input type="number" name="cost" class="form-control" ng-model="controller.formEntryCost" required />
+                <p ng-if="entryForm.cost.$invalid && entryForm.cost.$touched" class="help-block">Cost is required.</p>
+            </div>
         </div>
 
         <button type="submit" ng-disabled="entryForm.$invalid" ng-click="controller.addEntry()" class="btn btn-default">

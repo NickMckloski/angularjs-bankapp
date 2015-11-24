@@ -6,10 +6,24 @@
     function interest() {
         var controller = this;
 
-        //show output
-        controller.compOuput = false;
+        controller.simpleOuput = false;
+        //function to show simple output
+        controller.showSimpleOutput = function () {
+            controller.simpleOuput = true;
+        }
         
-        //function to show compoun output
+        //function to calculate simple interest
+        controller.calSimple = function () {
+            var starting = controller.simpleStarting;
+            var years = controller.simpleYears;
+            var rate = controller.simpleRate / 100;
+
+            var output = starting + (starting * rate * years);
+            return (output).formatMoney(2);
+        }
+
+        controller.compOuput = false;
+        //function to show compound output
         controller.showCompOutput = function () {
             controller.compOuput = true;
         }
@@ -34,6 +48,7 @@
             return (output).formatMoney(2);
 
         }
+
     }
 
 })();

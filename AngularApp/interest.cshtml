@@ -5,9 +5,58 @@
     Page.Title = "Interest Calculators";
 }
 <div class="col-md-12">
-    <h2>Interest Calculators</h2>
+
     <div class="col-md-6">
-        <p>Compounding interest</p>
+        <h2>Simple interest</h2>
+        <form name="simpleInterestForm" class="form-horizontal" role="form" novalidate>
+
+            <!--Starting input-->
+            <div class="form-group" ng-class="{ 'has-error' : simpleInterestForm.starting.$invalid && simpleInterestForm.starting.$touched }">
+                <label class="control-label col-sm-4 pull-left" for="name">Starting amount:</label>
+                <div class="col-sm-6 pull-right">
+                    <input type="number" name="starting" class="form-control" ng-model="controller.simpleStarting" required />
+                    <p ng-if="simpleInterestForm.starting.$invalid && simpleInterestForm.starting.$touched" class="help-block">
+                        Starting amount is required.
+                    </p>
+                </div>
+            </div>
+
+            <!--Years input-->
+            <div class="form-group" ng-class="{ 'has-error' : simpleInterestForm.years.$invalid && simpleInterestForm.years.$touched }">
+                <label class="control-label col-sm-4 pull-left" for="name">Years:</label>
+                <div class="col-sm-6 pull-right">
+                    <input type="number" name="years" class="form-control" ng-model="controller.simpleYears" required />
+                    <p ng-if="simpleInterestForm.years.$invalid && simpleInterestForm.years.$touched" class="help-block">
+                        Number of years is required.
+                    </p>
+                </div>
+            </div>
+
+            <!--Rate input-->
+            <div class="form-group" ng-class="{ 'has-error' : simpleInterestForm.rate.$invalid && simpleInterestForm.rate.$touched }">
+                <label class="control-label col-sm-4 pull-left" for="name">Interest rate:</label>
+                <div class="col-sm-6 pull-right">
+                    <input type="number" name="rate" class="form-control" ng-model="controller.simpleRate" required />
+                    <p ng-if="simpleInterestForm.rate.$invalid && simpleInterestForm.rate.$touched" class="help-block">
+                        Interest rate is required.
+                    </p>
+                </div>
+            </div>
+
+            <button type="submit" ng-disabled="simpleInterestForm.$invalid" ng-click="controller.showSimpleOutput()" class="btn btn-default pull-left">
+                Calculate simple interest
+            </button>
+
+            <p ng-if="controller.simpleOuput" class="pull-right" style="padding: 10px;">
+                Future amount: ${{controller.calSimple()}}
+            </p>
+
+        </form>
+    </div>
+    
+
+    <div class="col-md-6">
+        <h2>Compounding interest</h2>
 
         <form name="compoundInterestForm" class="form-horizontal" role="form" novalidate>
 
@@ -74,12 +123,5 @@
 
         </form>
     </div>
-    
 
-    <div class="col-md-6">
-        <p>Simple interest</p>
-        <form name="simpleInterestForm" class="form-horizontal" role="form" novalidate>
-
-        </form>
-    </div>
 </div>
