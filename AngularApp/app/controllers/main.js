@@ -1,9 +1,9 @@
 ﻿(function () {
     'use strict';
 
-    angular.module('app', ['ngCookies']).controller('Main', ['$cookies', main]);
+    angular.module('app', ['ngCookies']).controller('Account', ['$cookies', account]);
 
-    function main($cookies) {
+    function account($cookies) {
         var controller = this;
 
         controller.entries = [];
@@ -21,7 +21,7 @@
                 return date.getMonth() + 1 + '/' + date.getDate() + '/' + date.getFullYear();
             }
 
-            controller.entries.push({ name: controller.formEntryName, date: formatDate(controller.formEntryDate), type: controller.formEntryType, cost: controller.formEntryCost });
+            controller.entries.push({ name: controller.formEntryName, date: controller.formEntryDate == null ? formatDate(new Date()) : formatDate(controller.formEntryDate), type: controller.formEntryType, cost: controller.formEntryCost });
             //save entries into cookies
             $cookies.put('entries', JSON.stringify(controller.entries));
         }
@@ -47,6 +47,17 @@
                     total -= entry.cost;
             }
             return total;
+        }
+
+        //variable to detect if browser supports date input
+        controller.cantInputDate = function () {
+            var input = document.createElement('input');
+            input.setAttribute('type', 'date');
+
+            var notADateValue = 'not-a-date';
+            input.setAttribute('value', notADateValue);
+
+            return (input.value === notADateValue);
         }
     }
 
