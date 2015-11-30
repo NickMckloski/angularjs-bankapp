@@ -5,8 +5,11 @@
         <meta charset="utf-8" />
 
         <!--Bootstrap Css-->
-        <link rel="stylesheet" type="text/css" href="./Content/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="./Content/bootstrap/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="./Content/style.css">
+        <!--Angular-Chartjs Css-->
+        <link rel="stylesheet" href="~/Content/angular-chart.min.css">
+
     </head>
     <body ng-controller="@Page.Controller as controller">
 
@@ -29,15 +32,18 @@
         @RenderPage("./_Footer.cshtml")
         <!--Footer End-->
 
+        <!--Bootstrap libraries-->
+        <script src="./Scripts/jquery/jquery-2.1.4.min.js"></script>
+        <script src="./Scripts/bootstrap/bootstrap.min.js"></script>
+        <!--Angular Dependencies-->
+        <script src="~/Scripts/chartjs/Chart.min.js"></script><!--ChartJS is a dependency of Angular-Chartjs-->
         <!--Angular libraries-->
-        <script src="./Scripts/angular.min.js"></script>
-        <script src="./Scripts/angular-cookies.min.js"></script>
+        <script src="./Scripts/angular/angular.min.js"></script>
+        <script src="./Scripts/angular/cookies/angular-cookies.min.js"></script>
+        <script src="~/Scripts/angular/chart/angular-chart.min.js"></script>
         <!--Angular app and controller-->
         <script src="./app/app.module.js"></script>
         <script src="./app/controllers/@(Page.Controller + ".js")"></script>
-        <!--Bootstrap libraries-->
-        <script src="./Scripts/jquery-2.1.4.min.js"></script>
-        <script src="./Scripts/bootstrap.min.js"></script>
 
     </body>
 </html>

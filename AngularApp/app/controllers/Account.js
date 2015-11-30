@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    angular.module('app', ['ngCookies']).controller('Account', ['$cookies', account]);
+    angular.module('app', ['ngCookies', 'chart.js']).controller('Account', ['$cookies', account]);
 
     function account($cookies) {
         var controller = this;
@@ -60,6 +60,39 @@
 
             return (input.value === notADateValue);
         }
+
+
+        /*chart data*/
+
+        //chart labels
+        controller.labels = ["Income", "Expenses"];
+
+        //chart data
+        controller.data = [];
+
+        //chart colors
+        controller.colors = ['#009933', '#ff3300'];
+
+        //function to populate the chart data
+        controller.getData = function () {
+            //clear data
+            controller.data.length = 0;
+            var income = 0;
+            var expenses = 0;
+            //find values
+            for (var i = 0; i < controller.entries.length; i++) {
+                var entry = controller.entries[i];
+                if(entry.type == "Income")
+                    income += (parseFloat(entry.cost.replace('$', '').replace(/,/g, '')));
+                else
+                    expenses += (parseFloat(entry.cost.replace('$', '').replace(/,/g, '')));
+            }
+            //add values to data array
+            controller.data.push(income);
+            controller.data.push(expenses);
+            return controller.data;
+        }
+
     }
 
 })();

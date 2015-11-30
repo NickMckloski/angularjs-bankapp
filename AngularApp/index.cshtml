@@ -5,7 +5,7 @@
     Page.Title = "Account";
 }
 <!--Account table-->
-<div class="col-md-7">
+<div class="col-md-5">
     <h2>Bank Account</h2>
     <p ng-cloak>Account Balance: ${{controller.balance()}}</p>
     <table class="table table-bordered">
@@ -33,8 +33,17 @@
     </table>
 </div>
 <!--Entry form-->
-<div class="col-md-5">
-    <h2>New Entry:</h2>
+<div class="col-md-3">
+    <h2>Summary</h2>
+
+    <canvas id="doughnutSummary" class="chart chart-pie" 
+            chart-data="controller.getData()" chart-labels="controller.labels" chart-colours="controller.colors">
+    </canvas> 
+
+</div>
+<!--Entry form-->
+<div class="col-md-4">
+    <h2>New Entry</h2>
 
     <form name="entryForm" class="form-horizontal" role="form" novalidate>
 
