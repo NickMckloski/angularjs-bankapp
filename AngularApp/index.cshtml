@@ -51,7 +51,7 @@
         <div id="overview" class="tab-pane fade in active">
             <p class="no-data" ng-show="controller.overviewData[0] == 0 && controller.overviewData[1] == 0"><i>No data to show.</i></p>
             <div ng-show="controller.overviewData[0] != 0 || controller.overviewData[1] != 0">
-                <canvas id="piechartOverview" class="chart chart-pie"
+                <canvas id="piechartOverview" class="chart chart-pie" chart-options="{animationEasing : 'easeInOutCubic'}"
                         chart-data="controller.getOverviewData()" chart-labels="controller.overviewLabels"
                         chart-colours="controller.overviewColors" chart-legend="true"></canvas> 
             </div>
@@ -60,7 +60,7 @@
         <div id="income" class="tab-pane fade">
             <p class="no-data" ng-show="controller.incomeData[0] == 0 || controller.incomeData[0] == null"><i>No data to show.</i></p>
             <div ng-show="controller.incomeData[0] != null">
-                <canvas id="piechartIncome" class="chart chart-pie"
+                <canvas id="piechartIncome" class="chart chart-pie" chart-options="{animationEasing : 'easeInOutCubic'}"
                         chart-data="controller.getIncomeData()" chart-labels="controller.getIncomeLabels()" chart-legend="true"></canvas>
             </div>
         </div>
@@ -68,7 +68,7 @@
         <div id="expenses" class="tab-pane fade">
             <p class="no-data" ng-show="controller.expensesData[0] == 0 || controller.expensesData[0] == null"><i>No data to show.</i></p>
             <div ng-show="controller.expensesData[0] != null">
-                <canvas id="piechartExpenses" class="chart chart-pie"
+                <canvas id="piechartExpenses" class="chart chart-pie" chart-options="{animationEasing : 'easeInOutCubic'}"
                         chart-data="controller.getExpensesData()" chart-labels="controller.getExpensesLabels()" chart-legend="true"></canvas>
             </div>
         </div>
