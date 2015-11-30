@@ -65,10 +65,10 @@
         /*overview chart data*/
         //chart labels
         controller.overviewLabels = ["Income", "Expenses"];
-        //chart data
-        controller.overviewData = [];
         //chart colors
         controller.overviewColors = ['#009933', '#ff3300'];
+        //chart data
+        controller.overviewData = [];
         //function to populate the chart data
         controller.getOverviewData = function () {
             //clear data
@@ -89,9 +89,12 @@
             return controller.overviewData;
         }
 
+
+
         /*income chart data*/
         //chart labels
         controller.incomeLabels = [];
+        //function to populate the chart labels
         controller.getIncomeLabels = function () {
             //clear data
             controller.incomeLabels.length = 0;
@@ -115,12 +118,16 @@
                 if (entry.type == "Income")
                     controller.incomeData.push(parseFloat(entry.cost.replace('$', '').replace(/,/g, '')));
             }
+            console.log(controller.incomeData);
             return controller.incomeData;
         }
+
+
 
         /*expenses chart data*/
         //chart labels
         controller.expensesLabels = [];
+        //function to populate the chart labels
         controller.getExpensesLabels = function () {
             //clear data
             controller.expensesLabels.length = 0;

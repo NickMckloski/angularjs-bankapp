@@ -56,3 +56,9 @@ body {
 .pull-left {
     text-align: left !important;
 }
+
+.no-data {
+    color: dimgray;
+    text-align: center;
+    padding: 10px;
+}
