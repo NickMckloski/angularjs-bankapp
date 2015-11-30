@@ -20,6 +20,12 @@ body {
     color: red;
 }
 
+@media (min-width: 1200px) {
+    .container{
+        min-width: 1500px;
+    }
+}
+
 .jumbotron {
     color: white;
     background-color: #25529b;

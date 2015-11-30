@@ -62,21 +62,17 @@
         }
 
 
-        /*chart data*/
-
+        /*overview chart data*/
         //chart labels
-        controller.labels = ["Income", "Expenses"];
-
+        controller.overviewLabels = ["Income", "Expenses"];
         //chart data
-        controller.data = [];
-
+        controller.overviewData = [];
         //chart colors
-        controller.colors = ['#009933', '#ff3300'];
-
+        controller.overviewColors = ['#009933', '#ff3300'];
         //function to populate the chart data
-        controller.getData = function () {
+        controller.getOverviewData = function () {
             //clear data
-            controller.data.length = 0;
+            controller.overviewData.length = 0;
             var income = 0;
             var expenses = 0;
             //find values
@@ -88,11 +84,68 @@
                     expenses += (parseFloat(entry.cost.replace('$', '').replace(/,/g, '')));
             }
             //add values to data array
-            controller.data.push(income);
-            controller.data.push(expenses);
-            return controller.data;
+            controller.overviewData.push(income);
+            controller.overviewData.push(expenses);
+            return controller.overviewData;
         }
 
+        /*income chart data*/
+        //chart labels
+        controller.incomeLabels = [];
+        controller.getIncomeLabels = function () {
+            //clear data
+            controller.incomeLabels.length = 0;
+            //find values
+            for (var i = 0; i < controller.entries.length; i++) {
+                var entry = controller.entries[i];
+                if (entry.type == "Income")
+                    controller.incomeLabels.push(entry.name);
+            }
+            return controller.incomeLabels;
+        }
+        //chart data
+        controller.incomeData = [];
+        //function to populate the chart data
+        controller.getIncomeData = function () {
+            //clear data
+            controller.incomeData.length = 0;
+            //find values
+            for (var i = 0; i < controller.entries.length; i++) {
+                var entry = controller.entries[i];
+                if (entry.type == "Income")
+                    controller.incomeData.push(parseFloat(entry.cost.replace('$', '').replace(/,/g, '')));
+            }
+            return controller.incomeData;
+        }
+
+        /*expenses chart data*/
+        //chart labels
+        controller.expensesLabels = [];
+        controller.getExpensesLabels = function () {
+            //clear data
+            controller.expensesLabels.length = 0;
+            //find values
+            for (var i = 0; i < controller.entries.length; i++) {
+                var entry = controller.entries[i];
+                if (entry.type == "Expense")
+                    controller.expensesLabels.push(entry.name);
+            }
+            return controller.expensesLabels;
+        }
+        //chart data
+        controller.expensesData = [];
+        //function to populate the chart data
+        controller.getExpensesData = function () {
+            //clear data
+            controller.expensesData.length = 0;
+            //find values
+            for (var i = 0; i < controller.entries.length; i++) {
+                var entry = controller.entries[i];
+                if (entry.type == "Expense")
+                    controller.expensesData.push(parseFloat(entry.cost.replace('$', '').replace(/,/g, '')));
+            }
+            return controller.expensesData;
+        }
     }
 
 })();

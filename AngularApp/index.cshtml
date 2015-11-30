@@ -9,6 +9,7 @@
     <h2>Bank Account</h2>
     <p ng-cloak>Account Balance: ${{controller.balance()}}</p>
     <table class="table table-bordered">
+        <!--Table header-->
         <thead>
             <tr>
                 <th>Name</th>
@@ -17,6 +18,7 @@
                 <th>Value</th>
             </tr>
         </thead>
+        <!--Table body-->
         <tbody>
             <tr ng-cloak ng-repeat="entry in controller.entries track by $index">
                 <td>{{entry.name}}</td>
@@ -36,9 +38,32 @@
 <div class="col-md-3">
     <h2>Summary</h2>
 
-    <canvas id="doughnutSummary" class="chart chart-pie" 
-            chart-data="controller.getData()" chart-labels="controller.labels" chart-colours="controller.colors">
-    </canvas> 
+    <!--Tab links-->
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#overview">Overview</a></li>
+        <li><a data-toggle="tab" href="#income">Income</a></li>
+        <li><a data-toggle="tab" href="#expenses">Expenses</a></li>
+    </ul>
+
+    <!--Tab content-->
+    <div class="tab-content">
+        <!--Overview chart-->
+        <div id="overview" class="tab-pane fade in active">
+            <canvas id="piechartOverview" class="chart chart-pie"
+                chart-data="controller.getOverviewData()" chart-labels="controller.overviewLabels"
+                chart-colours="controller.overviewColors" chart-legend="true"></canvas> 
+        </div>
+        <!--Income chart-->
+        <div id="income" class="tab-pane fade">
+            <canvas id="piechartIncome" class="chart chart-pie"
+            chart-data="controller.getIncomeData()" chart-labels="controller.getIncomeLabels()" chart-legend="true"></canvas> 
+        </div>
+        <!--Expense chart-->
+        <div id="expenses" class="tab-pane fade">
+            <canvas id="piechartExpenses" class="chart chart-pie"
+            chart-data="controller.getExpensesData()" chart-labels="controller.getExpensesLabels()" chart-legend="true"></canvas> 
+        </div>
+    </div>
 
 </div>
 <!--Entry form-->
