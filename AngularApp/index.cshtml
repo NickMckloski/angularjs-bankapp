@@ -114,10 +114,10 @@
 
         <!--Cost input-->
         <div class="form-group" ng-class="{ 'has-error' : entryForm.cost.$invalid && entryForm.cost.$touched }">
-            <label for="cost" class="control-label col-sm-2 pull-left">Cost:</label>
+            <label for="cost" class="control-label col-sm-2 pull-left">Value:</label>
             <div class="col-sm-10 pull-right">
                 <input type="number" name="cost" class="form-control" ng-model="controller.formEntryCost" required />
-                <p ng-if="entryForm.cost.$invalid && entryForm.cost.$touched" class="help-block">Cost is required.</p>
+                <p ng-if="entryForm.cost.$invalid && entryForm.cost.$touched" class="help-block">Value is required.</p>
             </div>
         </div>
 
