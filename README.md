@@ -1,4 +1,5 @@
 # angularjs-bankapp
 a mock bank account app
 
-view it live at http://nickmckloski.com/bankapp/
+outdated
+new location: https://github.com/NickMckloski/nickmckloski.com/tree/master/bankapp
